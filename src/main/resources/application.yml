@@ -28,6 +28,6 @@ spring:
     property-naming-strategy : SNAKE_CASE
 
   jwt :
-    accessExp : 36000000000
-    secretKey: asdfasdfasdfasdf
+    accessExp : ${ACCESS_EXP}
+    secretKey: ${SECRET_KEY}
 
