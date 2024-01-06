@@ -23,7 +23,7 @@ public class UserLoginService {
 
         User user = userFacade.getUserByAccountId(request.getAccountId());
 
-        if (!passwordEncoder.matches(user.getPassword(),request.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMissMatchException.EXCEPTION;
         }
         return jwtProvider.getToken(user.getAccountId());
