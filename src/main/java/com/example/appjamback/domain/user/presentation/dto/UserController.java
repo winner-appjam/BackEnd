@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "User", description = "User API 입니다.")
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class UserController {
     private final UserSignupService userSignupService;
