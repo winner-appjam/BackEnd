@@ -11,11 +11,11 @@ spring:
       ddl-auto: create
     show-sql: true
 
-    cloud:
+  cloud:
       aws:
         credentials:
-          accessKey: ${AWS_ACCESS_KEY}
-          secretKey: ${AWS_SECRET_ACCESS_KEY}
+           accessKey: ${AWS_ACCESS_KEY}
+           secretKey: ${AWS_SECRET_ACCESS_KEY}
         s3:
           bucket: ${BUCKET}
         region:
