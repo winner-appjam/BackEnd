@@ -13,7 +13,7 @@ class MyMemoQueryService(
     fun execute(): QueryMemoResponse {
         val user = userFacade.getCurrentUser()
         return QueryMemoResponse(
-            memo = user!!.memo.toString()
+            memo = user.memo.toString()
         )
     }
 }

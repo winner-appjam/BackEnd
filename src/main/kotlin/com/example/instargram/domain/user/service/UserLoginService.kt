@@ -21,6 +21,6 @@ class UserLoginService(
     fun execute(request: LoginRequest): TokenResponse {
         val user = userFacade.getUserByAccountId(request.accountId)?: throw UserNotFoundException
         if (!passwordEncoder.matches(request.password, user.password)) throw PasswordMissMatchException
-        return jwtTokenProvider.getToken(user.accountId)
+        return jwtTokenProvider.getToken(user.accountId!!)
     }
 }

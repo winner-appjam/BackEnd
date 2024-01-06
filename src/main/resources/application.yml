@@ -12,6 +12,9 @@ spring:
             ddl-auto: update
         show-sql: true
 
+    jackson:
+        property-naming-strategy: SNAKE_CASE
+
     cloud:
         aws:
             credentials:

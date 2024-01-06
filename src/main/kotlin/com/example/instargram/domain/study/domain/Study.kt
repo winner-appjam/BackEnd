@@ -8,7 +8,7 @@ import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
-@Entity(name = "tbl_study")
+@Entity
 class Study (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
