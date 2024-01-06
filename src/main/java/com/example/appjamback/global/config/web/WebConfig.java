@@ -10,11 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
-                .exposedHeaders("*")
-                .allowCredentials(true)
-                .maxAge(3600);
+                .allowedOrigins("http://localhost:3000", "https://port-0-java-springboot-28f9s2blr1wg7it.sel5.cloudtype.app/*")
+                .allowedMethods("*");
     }
 }
