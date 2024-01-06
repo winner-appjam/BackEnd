@@ -1,6 +1,7 @@
 package com.example.instargram.domain.user.presentation
 
 import com.example.instargram.domain.user.presentation.dto.request.*
+import com.example.instargram.domain.user.presentation.dto.response.MyInfoResponse
 import com.example.instargram.domain.user.presentation.dto.response.QueryMemoResponse
 import com.example.instargram.domain.user.service.*
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,7 +22,8 @@ class UserController(
     private val modifyInfoService: ModifyInfoService,
     private val createSchoolService: CreateSchoolService,
     private val userProfileUploadService: UserProfileUploadService,
-    private val createMomoService: CreateMomoService
+    private val createMomoService: CreateMomoService,
+    private val myInfoService: MyInfoService
 ) {
 
     @PostMapping
@@ -50,4 +52,8 @@ class UserController(
 
     @GetMapping("/memo")
     fun getMemo(): QueryMemoResponse = myMemoQueryService.execute()
+
+    @GetMapping("/info")
+    fun info(): MyInfoResponse =
+        myInfoService.execute()
 }
