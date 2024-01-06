@@ -15,12 +15,13 @@ class CreateFeedService(
     private val s3Utils: S3Utils
 ) {
     @Transactional
-    fun execute(file: MultipartFile, content: String){
+    fun execute(file: MultipartFile, content: String, title: String){
         val user = userFacade.getCurrentUser()
         val fileUrl = s3Utils.uploadImage(file)
         studyRepository.save(
             Study(
                 user = user,
+                title = title,
                 content = content,
                 fileUrl = fileUrl
             )

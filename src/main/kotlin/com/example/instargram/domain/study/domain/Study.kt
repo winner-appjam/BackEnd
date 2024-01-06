@@ -18,6 +18,8 @@ class Study (
 
     val fileUrl: String? = null,
 
+    val title: String? = null,
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

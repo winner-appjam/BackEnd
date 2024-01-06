@@ -13,6 +13,6 @@ class StudyController(
     private val createFeedService: CreateFeedService
 ) {
     @PostMapping
-    fun createFeed(@RequestPart(name = "file", required = false)file: MultipartFile, @RequestPart content: String) =
-        createFeedService.execute(file, content)
+    fun createFeed(@RequestPart(name = "file", required = false)file: MultipartFile, @RequestPart content: String, @RequestPart title: String) =
+        createFeedService.execute(file, content, title)
 }
