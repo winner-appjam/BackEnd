@@ -7,11 +7,11 @@ class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    val accountId: String? = null,
+    var accountId: String? = null,
 
-    val name: String? = null,
+    var name: String? = null,
 
-    val password: String? = null,
+    var password: String? = null,
 
     var memo: String? = null,
 
@@ -21,7 +21,11 @@ class User(
 
     var day: Int? = null,
 
-    var re: Int ? = null
+    var re: Int ? = null,
+
+    var school: String?= null,
+
+    var file: String? = null
 
     ) {
     fun updateMemo(memo: String?) {
@@ -29,9 +33,9 @@ class User(
     }
 
     fun modify(accountId: String,name: String,password: String,year: Int, month: Int, day: Int) {
-        this.accountId
-        this.name
-        this.password
+        this.accountId = accountId
+        this.name = name
+        this.password = password
         this.year = year
         this.month = month
         this.day = day
@@ -39,5 +43,12 @@ class User(
 
     fun addRe() {
         this.re = (this.re ?: 0) + 5
+    }
+    fun addSchool(school: String) {
+        this.school = school
+    }
+
+    fun upload(file: String) {
+        this.file = file
     }
 }
