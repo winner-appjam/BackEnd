@@ -13,7 +13,9 @@ class Study (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    val memo: String? = null,
+    val content: String? = null,
+
+    val fileUrl: String? = null,
 
     @ManyToOne
     @JoinColumn(name = "user_id")
