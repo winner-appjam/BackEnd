@@ -15,7 +15,8 @@ class MyInfoService(
         return MyInfoResponse(
             name = user.name,
             school = user.school,
-            fileUrl = user.file
+            fileUrl = user.file,
+            re = user.re
         )
     }
 }

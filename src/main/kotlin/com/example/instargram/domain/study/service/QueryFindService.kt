@@ -20,9 +20,9 @@ class QueryFindService(
         user.addRe()
 
         return QueryFindResponse(
-            title = study.title.toString(),
-            content = study.content.toString(),
-            accountId = study.user!!.accountId.toString()
+            title = study.title,
+            content = study.content,
+            name = study.user!!.name
         )
         }
 }

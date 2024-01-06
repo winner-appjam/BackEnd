@@ -5,6 +5,8 @@ import com.example.instargram.domain.user.domain.repository.UserRepository
 import com.example.instargram.domain.user.exception.PasswordMissMatchException
 import com.example.instargram.domain.user.exception.UserAlreadyException
 import com.example.instargram.domain.user.presentation.dto.request.SignupRequest
+import com.example.instargram.global.security.jwt.JwtTokenProvider
+import com.example.instargram.global.security.jwt.dto.TokenResponse
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,11 +14,12 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserSignupService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
+    private val jwtTokenProvider: JwtTokenProvider
 ) {
 
     @Transactional
-    fun execute(request: SignupRequest) {
+    fun execute(request: SignupRequest): TokenResponse {
         if (userRepository.existsByAccountId(request.accountId)) {
             throw UserAlreadyException
         }
@@ -31,5 +34,6 @@ class UserSignupService(
                 name = request.name
             )
         )
+        return jwtTokenProvider.getToken(request.accountId)
     }
 }

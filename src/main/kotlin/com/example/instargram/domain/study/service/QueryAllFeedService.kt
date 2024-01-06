@@ -14,7 +14,7 @@ class QueryAllFeedService(
        return studyRepository.findAll().map {it->
            QueryAllFeedResponse(
                title = it.content.toString(),
-               user = it.user.toString()
+               user = it.user!!.name
            )
        }
    }

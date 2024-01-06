@@ -20,8 +20,8 @@ class JwtTokenProvider(
     private val jwtProperties: JwtProperties,
     private val authDetailsService: AuthDetailsService,
 ) {
-    fun getToken(info: String): TokenResponse {
-        val accessToken: String = generateAccessToken(info, jwtProperties.accessExp)
+    fun getToken(accountId: String): TokenResponse {
+        val accessToken: String = generateAccessToken(accountId, jwtProperties.accessExp)
         return TokenResponse(accessToken = accessToken)
     }
 
