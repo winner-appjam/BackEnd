@@ -1,6 +1,5 @@
 package com.example.instargram.domain.user.presentation
 
-import com.example.instargram.domain.study.service.CreateMemoService
 import com.example.instargram.domain.user.presentation.dto.request.CreateMemoRequest
 import com.example.instargram.domain.user.presentation.dto.request.LoginRequest
 import com.example.instargram.domain.user.presentation.dto.request.SignupRequest

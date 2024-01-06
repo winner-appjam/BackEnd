@@ -1,9 +1,7 @@
 package com.example.instargram.infrastructure.s3
 
-import com.amazonaws.HttpMethod
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.CannedAccessControlList
-import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
 import org.springframework.beans.factory.annotation.Value
@@ -17,11 +15,6 @@ class S3Utils(
 ) {
     @Value("\${spring.cloud.aws.s3.bucket}")
     lateinit var bucketName: String
-
-    companion object {
-        const val EXP_TIME = 1000 * 60 * 2
-        const val PATH: String = "appjam/"
-    }
 
     fun uploadImage(image: MultipartFile): String {
 
@@ -37,27 +30,16 @@ class S3Utils(
             throw RuntimeException(e.message)
         }
 
-        return generateObjectUrl(fileName)
+        return getFileUrl(fileName)
     }
 
     private fun getObjectMetadata(image: MultipartFile): ObjectMetadata {
         val objectMetadata = ObjectMetadata()
         objectMetadata.contentLength = image.size
         objectMetadata.contentType = image.contentType
-
         return objectMetadata
     }
 
-    fun generateObjectUrl(fileName: String): String {
-        val expiration = Date().apply {
-            time += EXP_TIME
-        }
-
-        return amazonS3.generatePresignedUrl(
-            GeneratePresignedUrlRequest(
-                bucketName,
-                "${PATH}$fileName"
-            ).withMethod(HttpMethod.GET).withExpiration(expiration)
-        ).toString()
-    }
+    fun  getFileUrl(fileName: String): String =
+         amazonS3.getUrl(bucketName, fileName).toString();
 }
