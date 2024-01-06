@@ -3,8 +3,6 @@ package com.example.instargram.global.security.jwt
 import com.example.instargram.global.security.exception.ExpiredTokenException
 import com.example.instargram.global.security.exception.InvalidJwtException
 import com.example.instargram.global.security.jwt.dto.TokenResponse
-import com.example.instargram.global.security.jwt.entity.RefreshToken
-import com.example.instargram.global.security.jwt.repository.RefreshTokenRepository
 import com.example.instargram.global.security.principle.AuthDetailsService
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException

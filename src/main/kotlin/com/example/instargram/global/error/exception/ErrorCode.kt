@@ -9,13 +9,10 @@ enum class ErrorCode (
     INVALID_TOKEN(401,"Invalid Token"),
     EXPIRED_TOKEN(401, "Expired Token"),
 
-    EMAIL_CODE_MISS_MATCH(400, "Email Code Miss Match"),
-    EMAIL_NOT_FOUND(404, "Email Not Found"),
-    EMAIL_ALREADY_EXISTS(409, "Email Already Exists"),
+    ACCOUNTID_NOT_FOUND(404, "AccountId Not Found"),
+    ACCOUNTID_ALREADY_EXISTS(409, "AccountId Already Exists"),
 
     PASSWORD_MISS_MATCH(400, "Password Miss Match"),
     USER_NOT_FOUND(404, "User Not Found"),
-    NAME_ALREADY_EXISTS(409, "Name Already Exists"),
 
-    SMS_CODE_MISS_MATCH(400, "Sms Code Miss Match")
 }

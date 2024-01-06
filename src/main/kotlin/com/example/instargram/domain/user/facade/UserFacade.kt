@@ -13,9 +13,9 @@ class UserFacade(
     fun getCurrentUser(): User? {
         val accountId = SecurityContextHolder.getContext().authentication.name
         SecurityContextHolder.clearContext()
-        return getUserByInfo(accountId)
+        return getUserByAccountId(accountId)
     }
 
-    fun getUserByInfo(info: String): User? =
-        userRepository.findByInfo(info)
+    fun getUserByAccountId(accountId: String): User? =
+        userRepository.findByAccountId(accountId)?: throw UserNotFoundException
 }

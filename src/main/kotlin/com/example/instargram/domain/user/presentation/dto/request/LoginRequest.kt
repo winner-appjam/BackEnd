@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank
 
 data class LoginRequest (
     @NotBlank
-    val info: String,
+    val accountId: String,
 
     @NotBlank
     val password: String,

@@ -12,19 +12,6 @@ spring:
             ddl-auto: update
         show-sql: true
 
-    redis:
-        host: ${REDIS_HOST}
-        port: ${REDIS_PORT}
-
-    mail:
-        host: smtp.gmail.com
-        port: 587
-        username: ${EMAIL}
-        password: ${EMAIL-PASSWORD}
-        properties:
-            mail.smtp.auth: true
-            mail.smtp.starttls.enable: true
-
     cloud:
         aws:
             credentials:
@@ -42,15 +29,7 @@ spring:
             max-file-size: 10MB
             max-request-size: 10MB
 
-    jackson:
-        property-naming-strategy : SNAKE_CASE
-
 jwt:
     secret: asdfasdfasdflkasdfjkl
     access_exp: 360000
-    refresh_exp: 360000
 
-coolsms:
-    api_key: ${API_KEY}
-    apisecret: ${API_SECRET_KEY}
-    fromnumber: ${NUMBER}
