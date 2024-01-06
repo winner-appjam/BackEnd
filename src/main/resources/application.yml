@@ -30,3 +30,4 @@ spring:
   jwt :
     accessExp : 36000000000
     secretKey: asdfasdfasdfasdf
+
