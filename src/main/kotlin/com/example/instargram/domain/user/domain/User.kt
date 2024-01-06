@@ -1,7 +1,5 @@
 package com.example.instargram.domain.user.domain
 
-import java.time.Duration
-import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -21,7 +19,9 @@ class User(
 
     var month: Int? = null,
 
-    var day: Int? = null
+    var day: Int? = null,
+
+    var re: Int ? = null
 
     ) {
     fun updateMemo(memo: String?) {
@@ -29,8 +29,15 @@ class User(
     }
 
     fun modify(accountId: String,name: String,password: String,year: Int, month: Int, day: Int) {
+        this.accountId
+        this.name
+        this.password
         this.year = year
         this.month = month
         this.day = day
+    }
+
+    fun addRe() {
+        this.re = (this.re ?: 0) + 5
     }
 }

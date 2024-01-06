@@ -7,4 +7,6 @@ import java.util.UUID
 interface UserRepository : JpaRepository<User, Long> {
     fun findByAccountId(accountId: String): User?
     fun existsByAccountId(accountId: String): Boolean
+
+    fun findByRe(accountId: String): User?
 }

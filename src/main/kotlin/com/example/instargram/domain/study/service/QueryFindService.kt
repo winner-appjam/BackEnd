@@ -12,8 +12,12 @@ class QueryFindService(
     private val userFacade: UserFacade
 ) {
     @Transactional(readOnly = true)
-    fun execute(studyId: Long): QueryFindResponse { val study = studyRepository.findById(studyId)
+    fun execute(studyId: Long): QueryFindResponse {
+        val user = userFacade.getCurrentUser()
+        val study = studyRepository.findById(studyId)
         .orElseThrow { NoSuchElementException("Study not found with ID") }
+
+        user.addRe()
 
         return QueryFindResponse(
             title = study.title.toString(),

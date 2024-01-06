@@ -26,5 +26,6 @@ class CreateFeedService(
                 fileUrl = fileUrl
             )
         )
+        user.addRe()
     }
 }
