@@ -2,6 +2,7 @@ package com.example.appjamback.domain.user.facade;
 
 import com.example.appjamback.domain.user.domain.User;
 import com.example.appjamback.domain.user.domain.repository.UserRepository;
+import com.example.appjamback.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,7 @@ public class UserFacade {
     }
 
     public User getUserByAccountId(String accountId) {
-        return userRepository.findByAccountId(accountId);
+        return userRepository.findByAccountId(accountId)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }

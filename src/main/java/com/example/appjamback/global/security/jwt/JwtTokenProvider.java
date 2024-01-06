@@ -1,6 +1,7 @@
 package com.example.appjamback.global.security.jwt;
 
 import com.example.appjamback.global.security.dto.TokenResponse;
+import com.example.appjamback.global.security.exception.ExpiredJwtException;
 import com.example.appjamback.global.security.principle.AuthDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -61,7 +62,11 @@ public class JwtTokenProvider {
     }
 
     private Claims getTokenBody(String token) {
+        try {
             return Jwts.parser().setSigningKey(jwtProperties.getSecretKey())
                     .parseClaimsJws(token).getBody();
+        } catch (Exception e) {
+            throw ExpiredJwtException.EXCEPTION;
         }
+    }
 }
