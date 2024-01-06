@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.web.cors.CorsUtils
 
 @Configuration
 class SecurityConfig (
@@ -30,10 +31,14 @@ class SecurityConfig (
             .disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-        http
-            .authorizeRequests().anyRequest().permitAll()
 
+        http .authorizeRequests()
+            .requestMatchers(CorsUtils::isCorsRequest)
+            .permitAll()
+            .antMatchers("/")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
         http .apply(FilterConfig(objectMapper))
 
         http.addFilterBefore(JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
