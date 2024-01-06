@@ -1,6 +1,7 @@
 package com.example.instargram.domain.study.domain
 
 import com.example.instargram.domain.user.domain.User
+import java.util.Date
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -16,6 +17,7 @@ class Study (
     val content: String? = null,
 
     val fileUrl: String? = null,
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
